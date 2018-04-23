@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>RPS</title>
+  </head>
+  <body>
+    <script>
+      let computerSelection = computerPlay();
+      let playerSelection = prompt("Rock, Paper, or Scissors?").toLowerCase();
+      let playerScore = 0;
+      let computerScore = 0;
+      console.log(playRound(playerSelection, computerSelection));
+      function computerPlay() {
+        let computerPlay = Math.random();
+        if (computerPlay <= .33) {
+          computerPlay = "rock";
+        } else if (computerPlay <= .66 && computerPlay >= .34 ) {
+          computerPlay = "paper";
+        } else {
+          computerPlay = "scissors";
+        }
+      }
+      function playRound(playerSelection, computerSelection) {
+        if (playerSelection === computerSelection) {
+          return "Tie!";
+        }
+        if (playerSelection === "rock") {
+          if (computerSelection === "scissors") {
+            return "You win! Rock beats Scissors";
+          } else {
+            return "You lose! Paper beats Rock";
+          }
+        }
+        if (playerSelection === "scissors") {
+          if (computerSelection === "rock") {
+            return "You lose! Rock beats Scissors";
+          } else {
+            return "You win! Scissors beats Paper";
+          }
+        }
+        if (playerSelection === "paper") {
+          if (computerSelection === "rock") {
+            return "You win! Paper beats Rock";
+          } else {
+            return "You lose! Scissors beats Paper";
+          }
+        }
+      }
+      function game() {
+        playRound(playerSelection, computerSelection);
+        if (playRound().search("You win")) {
+          playerScore += 1;
+        } else {
+          computerScore += 1;
+        }
+        console.log("You have " + playerScore + " point(s)");
+        console.log("Computer has " + computerScore + " points(s)");
+      }
+    </script>
+  </body>
+</html>
