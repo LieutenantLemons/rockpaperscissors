@@ -18,10 +18,13 @@
         let computerPlay = Math.random();
         if (computerPlay <= .33) {
           computerPlay = "rock";
+          return "rock";
         } else if (computerPlay <= .66 && computerPlay >= .34 ) {
           computerPlay = "paper";
+          return "paper";
         } else {
           computerPlay = "scissors";
+          return "scissors";
         }
       }
       function playRound(playerSelection, computerSelection) {
@@ -29,32 +32,35 @@
         computerSelection = computerPlay();
         if (playerSelection === computerSelection) {
            console.log("Tie!");
+           return;
         }
         if (playerSelection === "rock") {
           if (computerSelection === "scissors") {
             console.log("You win! Rock beats Scissors");
-            playerScore += 1;
+            return playerScore += 1;
+
           } else {
             console.log("You lose! Paper beats Rock");
-            computerScore += 1;
+            return computerScore += 1;
+
           }
         }
         if (playerSelection === "scissors") {
           if (computerSelection === "rock") {
             console.log("You lose! Rock beats Scissors");
-            computerScore += 1;
+            return computerScore += 1;
           } else {
             console.log("You win! Scissors beats Paper");
-            playerScore += 1;
-          }
+            return playerScore += 1;
+        }
         }
         if (playerSelection === "paper") {
           if (computerSelection === "rock") {
             console.log("You win! Paper beats Rock");
-            playerScore += 1;
+            return playerScore += 1;
           } else {
             console.log("You lose! Scissors beats Paper");
-            computerScore += 1;
+            return computerScore += 1;
           }
         }
       }
